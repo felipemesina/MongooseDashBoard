@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <title>Dogs</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="container">
+          <h2>Our Dogs</h2>
+          <a href="/dogs/new"><button type="button" class="btn btn-success">Add</button></a>
+          <% for (var dog of dogs) { %>
+            <h3>Name: <a href="/dogs/<%= dog._id %>"><%= dog.name %></a></h3>
+            <p>Age: <%= dog.age %></p>
+            <a href="/dogs/edit/<%= dog._id %>"><button type="button" class="btn btn-info">Edit</button></a>
+            <form action="/dogs/destroy/<%= dog._id %>" method="post">
+                <input class="btn btn-danger" type="submit" value="Remove">
+            </form>
+            <hr>
+            <% } %>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
